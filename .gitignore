@@ -1,1 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# OS
+.DS_Store
+
+# clickstreams
 data/clickstreams.csv
