@@ -1,0 +1,19 @@
+name: dabi-projekt
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.13.7
+  - numpy
+  - pandas
+  - seaborn
+  - matplotlib
+  - plotly
+  - missingno
+  - pyarrow
+  - ipykernel
+  - jupyter
+  - nbformat
+  - jupytext
+  - ipython
+  - pip
