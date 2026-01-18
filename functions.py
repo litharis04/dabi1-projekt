@@ -86,6 +86,19 @@ def plot_share_vs_conversion(df, column_name, size=(16, 8), color_share='lightgr
 
     # Füge Datenbeschriftungen hinzu
     # ax.bar_label(bar1, fmt='%.2f%%', fontsize=9, color='dimgray')
+    for p in bar1.patches:
+        width, height = p.get_width(), p.get_height()
+        x, y = p.get_xy() 
+        ax.text(
+            x, 
+            y + height + 2, 
+            f'{height:.1f}%', 
+            horizontalalignment='left', 
+            verticalalignment='top',
+            color='grey',
+            fontsize=8,
+            fontweight='bold'
+            )
     ax.bar_label(bar2, fmt='%.2f%%', padding=3, fontsize=9, weight='bold', color='dimgray')
 
     # Füge Legende und Formatierung hinzu
