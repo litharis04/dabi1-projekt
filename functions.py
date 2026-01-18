@@ -5,20 +5,27 @@ import numpy as np
 from scipy.stats import chi2_contingency
 
 def print_unique_values_summary(df, columns):
-    for col in columns:
+    """
+    Gibt eine Zusammenfassung der eindeutigen Werte pro Spalte im DataFrame aus.
+    """
+
+    for col in columns: # Iteriere über die angegebenen Spalten
         print(f"=== {col} ===")
         print(f"Eindeutige Werte: {df[col].nunique()}")
         print(f"Fehlende Werte: {df[col].isna().sum():,}")
         print("\nTop 10 häufigste Werte:")
 
-        counts = df[col].value_counts().head(10)
+        counts = df[col].value_counts().head(10) # Zähle die häufigsten Werte
         for val, count in counts.items():
-            pct = (count / len(df) * 100)
-            print(f"'{val}' - {count:,} - {pct:.2f}%")
+            pct = (count / len(df) * 100) # Berechne den Prozentsatz
+            print(f"'{val}' - {count:,} - {pct:.2f}%") # Ausgabe des Werts, der Anzahl und dem Prozentsatz
         print("\n")
 
 def save_unique_values_summary(df, columns, df_name):
-    # Erstelle den Inhalt der Datei
+    """
+    Speichert eine Zusammenfassung der eindeutigen Werte pro Spalte im DataFrame in einer Textdatei.
+    """
+
     output_lines = [f'Zusammenfassung der eindeutigen Werte pro Spalte in {df_name}']
     output_lines.append("=" * 60)
     output_lines.append("")
@@ -58,7 +65,9 @@ def save_unique_values_summary(df, columns, df_name):
 
 
 def plot_share_vs_conversion(df, column_name, size=(16, 8), color_share='lightgrey', color_cv='gold', sortby=['user_share', False]):
-    """Erstellt ein Balkendiagramm, das den Benutzeranteil und die Conversion Rate für eine gegebene Spalte darstellt."""
+    """
+    Erstellt ein Balkendiagramm, das den Benutzeranteil und die Conversion Rate für eine gegebene Spalte darstellt.
+    """
 
     # Berechne die Zusammenfassung
     df_summary = df.groupby(column_name).agg(
@@ -124,6 +133,7 @@ def categorical_correlation_analysis(df, var1, var2, min_sample=25):
     """
     Vollständige Korrelationsanalyse zwischen zwei kategorialen Spalten.
     """
+    
     print("="*60)
     print(f"Korrelationsanalyse: {var1} vs {var2}")
     print("="*60)
