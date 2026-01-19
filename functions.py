@@ -1,7 +1,9 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import os
 import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 from scipy.stats import chi2_contingency
 
 def print_unique_values_summary(df, columns):
@@ -54,8 +56,12 @@ def save_unique_values_summary(df, columns, df_name):
             output_lines.append("-" * 60)
             output_lines.append("")
 
+    output_dir = 'outputs'
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
     # Speichere in Datei
-    output_file_path = f'outputs/{df_name}_unique_values_summary.txt'
+    output_file_path = f'{output_dir}/{df_name}_unique_values_summary.txt'
     with open(output_file_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(output_lines))
 
