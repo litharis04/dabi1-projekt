@@ -10,3 +10,4 @@ __pycache__/
 
 # clickstreams
 data/clickstreams.csv
+data/new_clickstreams_.csv
